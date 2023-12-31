@@ -23,6 +23,25 @@ const postController = {
       return response.json({ error: "Token is invalid" });
     }
   },
+viewAllPosts:async (request, response) => {
+    try{
+        const userId =request.userId;
+        //get all the posts
+        const posts = await Post.find({ user: userId});
+
+        //return the post
+        return response.json({message: 'Pst received Successfully', posts});
+    }catch (error){
+        return response.json({error: 'Token is invalid'});
+    }
+}
+
+
+
+
+
+
+
 };
 
 module.exports = postController;
